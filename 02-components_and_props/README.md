@@ -179,7 +179,7 @@ which gets very powerful.
 
 <img src="/assets/progmasters_restaurant_menu.png" alt="menu_components" width="500" />
 <br/>
-Check out the code here: [PROGmasters_menu_code](composition/menu.html)
+Check out the code here: [Menu](composition/menu.html)
 
 ### Splitting up components
 
