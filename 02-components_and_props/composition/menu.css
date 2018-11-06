@@ -1,0 +1,40 @@
+.menu__container {
+    text-align: center;
+    padding-top: 50px;
+    color: rgb(249, 159, 58);
+}
+
+.card {
+    margin: 50px auto;
+    width: 30%;
+    text-align: center;
+    padding: 15px;
+    color: #8e7248;
+    background-color: rgb(68, 173, 201);
+    border-radius: 4px;
+    box-shadow: 2px 4px 12px rgba(125, 125, 125, 0.2);
+}
+
+.simple-card {
+    margin: 50px auto;
+    width: 30%;
+    text-align: center;
+    padding: 15px;
+    border-radius: 4px;
+    background-color: rgb(68, 173, 201);
+    color: whitesmoke;
+    box-shadow: 2px 4px 12px rgb(51, 135, 158);
+    border: 1px rgb(51, 135, 158) solid;
+}
+
+.card-left, .card-right {
+    display: inline-block;
+    width: 46%;
+    padding: 2%;
+    box-sizing: border-box;
+    vertical-align: middle;
+}
+
+img {
+    width: 100%;
+}

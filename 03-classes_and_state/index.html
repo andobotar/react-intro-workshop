@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Classes and State</title>
+    <!-- These scripts will make React and ReactDOM globally available. -->
+    <!--<script src="./../assets/react@16.0.0/umd/react.development.js"></script>-->
+    <!--<script src="./../assets/react-dom@16.0.0/umd/react-dom.development.js"></script>-->
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+
+    <!-- This will let us write JSX and ES6 in a script tag with a special type of "text/babel" -->
+    <!--<script src="./../assets/babel-standalone@6.26.0/babel.js"></script>-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js"></script>
+</head>
+<body>
+
+    <div id="root"></div>
+
+<script type="text/babel">
+
+    class Toggle extends React.Component {
+
+        state = {
+            toggled: false,
+        };
+
+        toggle = () => {
+            this.setState((prevState, props) => {
+                return {toggled: !prevState.toggled};
+            });
+        };
+
+        render() {
+            return (
+                    <div>
+                        <button onClick={this.toggle}>Toggle</button>
+                        {this.state.toggled && <p>Hidden toggle-able text</p>}
+                    </div>
+            );
+        }
+    }
+
+    ReactDOM.render(<Toggle/>, root);
+
+</script>
+</body>
+</html>

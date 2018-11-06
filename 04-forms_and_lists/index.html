@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>04 Forms and Lists - exercise</title>
+    <!-- These scripts will make React and ReactDOM globally available. -->
+    <script src="./../assets/react@16.0.0/umd/react.development.js"></script>
+    <script src="./../assets/react-dom@16.0.0/umd/react-dom.development.js"></script>
+    <!--<script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>-->
+    <!--<script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>-->
+
+    <!-- This will let us write JSX and ES6 in a script tag with a special type of "text/babel" -->
+    <script src="./../assets/babel-standalone@6.26.0/babel.js"></script>
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js"></script>-->
+
+    <style>table, th, td {border: 1px solid black}</style>
+</head>
+<body>
+
+    <div id="root"></div>
+
+<script type="text/babel">
+
+    class FormAndList extends React.Component {
+
+        state = {
+            people: [],
+            name: '',
+            sex: '',
+            age: ''
+        };
+
+        handleChange = event => {
+            this.setState({
+                [event.target.name]: event.target.value
+            });
+        };
+
+        handleSubmit = event => {
+            event.preventDefault();
+
+            const formData = {
+                name: this.state.name,
+                sex: this.state.sex,
+                age: this.state.age
+            };
+
+            this.setState(prevState => ({
+                people: prevState.people.concat(formData),
+                name: '',
+                sex: '',
+                age: ''
+            }));
+        };
+
+        render() {
+
+            return (
+                <div>
+                    <form onSubmit={this.handleSubmit}>
+
+                         /* Add input field for name here */
+
+                        <br/>
+
+                        <label htmlFor="sex">Sex:  </label>
+                        Male:<input
+                                type="radio"
+                                name="sex"
+                                value="male"
+                                checked={this.state.sex === "male"}
+                                onChange={this.handleChange}
+                        />
+                        Female:<input
+                                type="radio"
+                                name="sex"
+                                value="female"
+                                checked={this.state.sex === "female"}
+                                onChange={this.handleChange}
+                        />
+                        <br/>
+
+                        <label htmlFor="age">Which age group do you belong to? </label>
+                        <select
+                                type="select"
+                                id="age"
+                                name="age"
+                                onChange={this.handleChange}
+                                value={this.state.age}>
+                            <option value="" disabled>-- Choose an option --</option>
+                            <option value="0-18">0-18</option>
+                            <option value="18-26">18-26</option>
+                            <option value="26-33">26-33</option>
+                            <option value="33-50">33-50</option>
+                            <option value="50+">50+</option>
+                        </select>
+                        <br/>
+
+                        <button type="submit">Submit</button>
+                    </form>
+                    <br/>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Sex</th>
+                                <th>Age group</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                        /* Add table rows for the submitted people */
+
+                        </tbody>
+                    </table>
+                </div>
+            );
+        }
+    }
+
+    ReactDOM.render(<FormAndList/>, root);
+</script>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>04 Forms and Lists</title>
+    <!-- These scripts will make React and ReactDOM globally available. -->
+    <script src="./../assets/react@16.0.0/umd/react.development.js"></script>
+    <script src="./../assets/react-dom@16.0.0/umd/react-dom.development.js"></script>
+    <!-- This will let us write JSX and ES6 in a script tag with a special type of "text/babel" -->
+    <script src="./../assets/babel-standalone@6.26.0/babel.js"></script>
+</head>
+<body>
+
+<div id="root"></div>
+
+<script type="text/babel">
+    const root = document.getElementById('root');
+
+    class Form extends React.Component {
+        state = {
+            firstName: '',
+            email: '',
+            consent: false,
+            color: ''
+        };
+
+        handleChange = event => {
+            const target = event.target;
+            const value = target.type === 'checkbox' ? target.checked : target.value;
+            console.log(target.name, value);
+            this.setState({
+                [target.name]: value
+            });
+        };
+
+        handleSubmit = event => {
+            event.preventDefault();
+            const data = JSON.stringify(this.state);
+            // fetch('https://myserver.com/submit-form', {
+            //   method: 'post',
+            //   body: data,
+            // });
+            console.log('Fake submitting...', data);
+            this.setState({
+                firstName: '',
+                email: '',
+                consent: false,
+                color: ''
+            });
+        };
+
+        render() {
+            return (
+                    <form onSubmit={this.handleSubmit}>
+                        <label htmlFor="firstName">Name: </label>
+                        <input
+                                type="text"
+                                id="firstName"
+                                name="firstName"
+                                value={this.state.firstName}
+                                onChange={this.handleChange}
+                        />
+                        <br/>
+
+                        <label htmlFor="email">Email: </label>
+                        <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                value={this.state.email}
+                                onChange={this.handleChange}
+                        />
+                        <br/>
+
+                        <label htmlFor="consent">Can we email you spam? </label>
+                        <input
+                                type="checkbox"
+                                id="consent"
+                                name="consent"
+                                checked={this.state.consent}
+                                onChange={this.handleChange}
+                        />
+                        <br/>
+
+                        <label htmlFor="color">What's your favorite color? </label>
+                        <select
+                                type="select"
+                                id="color"
+                                name="color"
+                                onChange={this.handleChange}
+                                value={this.state.color}>
+                            <option value="red">red</option>
+                            <option value="green">green</option>
+                            <option value="blue">blue</option>
+                        </select>
+                        <br/>
+
+                        <button type="submit">Submit</button>
+                    </form>
+            );
+        }
+    }
+
+    ReactDOM.render(<Form/>, root);
+</script>
+</body>
+</html>

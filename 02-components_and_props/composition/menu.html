@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Simple Hummus Card</title>
+    <link rel="stylesheet" href="menu.css">
+</head>
+
+<body>
+
+    <!-- These scripts will make React and ReactDOM globally available. -->
+    <script src="../../assets/react@16.0.0/umd/react.development.js"></script>
+    <script src="../../assets/react-dom@16.0.0/umd/react-dom.development.js"></script>
+    <!-- This will let us write JSX and ES6 in a script tag with a special type of "text/babel" -->
+    <script src="../../assets/babel-standalone@6.26.0/babel.js"></script>
+
+    <div id="root"></div>
+
+    <script type="text/babel">
+
+        function Card(props) {
+            return (
+                <div className="simple-card">
+                    <h2>{props.name}</h2>
+                    <p>{props.description}</p>
+                </div>
+            );
+        }
+
+        function Menu(props) {
+            return (
+                <div className="menu__container">
+                    <h1>Welcome to PROGmasters Restaurant!</h1>
+                    <Card 
+                        name={props.foods[0].name} 
+                        description={props.foods[0].description} 
+                    />
+                    <Card
+                        name={props.foods[1].name} 
+                        description={props.foods[1].description}
+                    />
+                </div>
+            );
+        }
+
+        const foodList = [
+            {name: 'Hummus', description: 'Our hummus is so tasty'},
+            {name: 'Ice-cream', description: 'Extremely icy and incredibly creamy'}
+        ];
+
+        ReactDOM.render(<Menu foods={foodList} />, root);
+
+    </script>
+
+</body>
+
+</html>
