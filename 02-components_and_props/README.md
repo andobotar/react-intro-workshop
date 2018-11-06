@@ -177,10 +177,9 @@ The `<Menu>` component shouldn't have to care about the implementation details o
 This is a contrived example but you can have as much complexity as you like concealed behind a simple JSX tag, 
 which gets very powerful.
 
-<img src="react-intro-workshop/assets/progmasters_restaurant_menu.png" alt="menu_components" width="500" />
+<img src="/assets/progmasters_restaurant_menu.png" alt="menu_components" width="500" />
 <br/>
-Check out the code here: [PROGmasters_menu_code](composition/menu.html)  
-  
+Check out the code here: [PROGmasters_menu_code](composition/menu.html)
 
 ### Splitting up components
 
